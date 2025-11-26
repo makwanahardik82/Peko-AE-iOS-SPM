@@ -41,7 +41,7 @@ let package = Package(
 
     ]
 )
-*/
+
 
 
 let package = Package(
@@ -88,6 +88,49 @@ let package = Package(
                 .product(name: "Peko-AE-iOS-Utility", package: "Peko-AE-iOS-Utility-SPM")
             ],
             path: "Sources/Peko-AE-iOS/Dashboard"
+        )
+    ]
+)
+*/
+let package = Package(
+    name: "Peko-AE-iOS",
+    platforms: [.iOS(.v14)],
+    products: [
+        .library(
+            name: "Peko-AE-iOS",
+            targets: ["Peko-AE-iOS"]
+        ),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/PureLayout/PureLayout.git", .upToNextMajor(from: "3.1.9")),
+        .package(url: "https://github.com/WenchaoD/FSCalendar.git", .upToNextMajor(from: "2.8.4")),
+        .package(url: "https://github.com/Juanpe/SkeletonView.git", .upToNextMajor(from: "1.7.0")),
+        .package(url: "https://github.com/alickbass/CodableFirebase", .upToNextMajor(from: "0.2.2")),
+        .package(url: "https://github.com/makwanahardik82/Peko-AE-iOS-Utility-SPM.git", .upToNextMajor(from: "1.0.0")),
+    ],
+    targets: [
+        
+        // Public target — exposed to consumers
+        .target(
+            name: "Peko-AE-iOS",
+            dependencies: [
+                "PekoDashboard", // internal hidden module
+                .product(name: "PureLayout", package: "PureLayout"),
+                .product(name: "FSCalendar", package: "FSCalendar"),
+                .product(name: "SkeletonView", package: "SkeletonView"),
+                .product(name: "CodableFirebase", package: "CodableFirebase"),
+                .product(name: "Peko-AE-iOS-Utility", package: "Peko-AE-iOS-Utility-SPM")
+            ],
+            path: "Sources/Peko-AE-iOS"
+        ),
+
+        // Internal-only Dashboard target (now outside Sources/)
+        .target(
+            name: "PekoDashboard",
+            dependencies: [
+                .product(name: "Peko-AE-iOS-Utility", package: "Peko-AE-iOS-Utility-SPM")
+            ],
+            path: "PrivateModules/Dashboard",
         )
     ]
 )
