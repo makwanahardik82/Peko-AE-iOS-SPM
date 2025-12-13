@@ -65,7 +65,9 @@ let package = Package(
             .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.6.4")),
             .package(url: "https://github.com/SDWebImage/SDWebImage.git", .upToNextMajor(from: "5.21.2")),
         .package(url: "https://github.com/simla-tech/Fastis", .upToNextMajor(from: "3.2.0")),
-       // .package(url: "https://github.com/EFPrefix/EFCountingLabel", .upToNextMajor(from: "5.1.5")),
+        .package(url: "https://github.com/airbnb/lottie-ios", .upToNextMajor(from: "4.5.2")),
+        .package(url: "https://github.com/warchimede/RangeSlider", .upToNextMajor(from: "1.2.0")),
+        
         
         
     ],
@@ -80,8 +82,8 @@ let package = Package(
 //                .product(name: "libPhoneNumber", package: "libPhoneNumber-iOS"),
                 .product(name: "Alamofire", package: "Alamofire"),
                 .product(name: "SDWebImage", package: "SDWebImage"),
-                .product(name: "Fastis", package: "Fastis"),
-              //  .product(name: "EFCountingLabel", package: "EFCountingLabel"),
+                .product(name: "Lottie", package: "lottie-ios"),
+                .product(name: "WARangeSlider", package: "RangeSlider"),
             ],
         ),
         .binaryTarget(name: "PekoSDK", path: "./PekoSDK.xcframework")
